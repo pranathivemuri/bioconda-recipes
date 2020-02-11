@@ -1,6 +1,6 @@
 {% set name = "ipyrad" %}
-{% set version = "0.9.15" %}
-{% set sha256 = "5ed30b57f66e2091b9e599a4cdf4885298fe66529aafebae5026cec6dbb76447" %}
+{% set version = "0.9.33" %}
+{% set sha256 = "d51514b2e26d7fc44135ccc695b390022ee83e9653c00a4fc649058fa8fdfe58" %}
 
 package:
   name: {{name}}
@@ -34,6 +34,7 @@ requirements:
     - cutadapt
     - pysam >=0.15
     - mpi4py >=3.0 # [ py >= 37 ]
+    - notebook
     - bedtools
     - muscle
     - vsearch >=2.13
