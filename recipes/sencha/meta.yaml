@@ -1,0 +1,66 @@
+{% set version = "1.0.0" %}
+
+package:
+  name: sencha
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/b/sencha/sencha-{{ version }}.tar.gz
+  sha256: 3afc9843b21ebd764f005825b93899016313d8645ecde9a04e52dddabc4015af
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv "
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools >=38.6.0
+    - setuptools_scm
+    - setuptools_scm_git_archive
+
+  run:
+    - biopython
+    - click
+    - httmock
+    - khmer
+    - networkx
+    - numpy
+    - pandas
+    - scikit-learn
+    - seaborn
+    - sourmash
+    - tqdm
+    - ipykernel
+    - joblib
+    - notebook
+    - pyarrow
+    - s3fs
+    - fastparquet
+
+test:
+  imports:
+    - sencha
+
+  commands:
+    - sencha --help
+    - sencha translate
+    - sencha index
+
+
+about:
+  home: https://github.com/czbiohub/sencha
+  license: MIT License
+  license_file: LICENSE
+  summary: 'sencha: cli tool for translating RNA-seq reads into coding protein sequence'
+  license_family: MIT
+  dev_url: https://github.com/czbiohub/sencha
+
+extra:
+  recipe-maintainers:
+    - pranathi7
+    - olgabot
+  identifiers:
+    - biotools:sencha
